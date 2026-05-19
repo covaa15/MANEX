@@ -21,12 +21,13 @@
     .app-shell {
         overflow: visible !important;
         height: auto !important;
+        width: 100dvw !important;
+        height: 100dvh !important;
     }
 
     .app-content {
         width: 100dvw !important;
         height: 100dvh !important;
-        padding-bottom: 56px !important;
     }
 
     /* ── Barra colapsable (dept >= 5) ── */
@@ -45,6 +46,8 @@
     }
 
     .bottom-nav-panel {
+        background-color: #212529;
+        background-color: var(--bs-dark-bg-subtle, #212529);
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         max-height: 60vh;
         overflow-y: auto;

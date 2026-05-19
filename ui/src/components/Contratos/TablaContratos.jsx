@@ -26,10 +26,14 @@ export function TablaContratos() {
     const [contratoEliminando, setContratoEliminando] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [errorCarga, setErrorCarga] = useState(null);
-    const [filtros, setFiltros] = useState({salario: '', horas: ''});
-    const setFiltro = (campo, valor) => setFiltros(prev => ({...prev, [campo]: valor}));
 
     const {user, tengoPermiso} = useUsers();
+
+    useEffect(() => {
+        sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
+    }, [paginaActual]);
+    const [filtros, setFiltros] = useState({salario: '', horas: ''});
+    const setFiltro = (campo, valor) => setFiltros(prev => ({...prev, [campo]: valor}));
 
     useEffect(() => {
         sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
@@ -78,7 +82,7 @@ export function TablaContratos() {
         cargarContratos();
     };
 
-    const contratosFiltrados = listaContratos.filter(c => (
+    const contratosFiltrados = listaContratos?.filter(c => (
         (!filtros.salario || String(c?.Salario_anual ?? '').includes(filtros.salario)) &&
         (!filtros.horas || String(c?.Horas_anuales ?? '').includes(filtros.horas))
     ));
