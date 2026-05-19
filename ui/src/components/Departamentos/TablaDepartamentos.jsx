@@ -161,7 +161,7 @@ export function TablaDepartamentos() {
                             </thead>
                             <tbody className="table-group-divider">
                             {listaDepartamentos.length > 0 ? listaDepartamentos.map(departamento => (
-                                <tr key={departamento?.ID} className={`h-auto `}>
+                                <tr key={departamento?.ID} className="h-auto">
                                     <th scope="row">
                                         <i className={`${departamento?.ID == 8 ? 'bi bi-shield badge text-bg-danger' : ''}`}>{departamento?.ID == 8 ? '!' : ''}</i>
                                         &nbsp;{departamento?.ID}
@@ -212,8 +212,8 @@ export function TablaDepartamentos() {
                                 }}
                             />
                             <span className="small text-muted">
-                            Página {paginaActual + 1} de {paginaMaxima + 1} · {totalRegistros} registros
-                        </span>
+                                Página {paginaActual + 1} de {paginaMaxima + 1} · {totalRegistros} registros
+                            </span>
                             <button
                                 className="btn btn-outline-secondary btn-sm bi bi-chevron-right"
                                 aria-label="Página siguiente"
