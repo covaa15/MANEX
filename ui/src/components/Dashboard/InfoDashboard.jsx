@@ -446,26 +446,6 @@ export function InfoDashboard() {
 
     return (
         <div className="container-fluid px-4 py-4 dashboard">
-<<<<<<< HEAD
-
-            {errorDashboard && (
-                <div className="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
-                    <i className="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
-                    <span>{errorDashboard}</span>
-                    <button
-                        type="button"
-                        className="btn btn-sm btn-outline-danger ms-auto"
-                        onClick={() => {
-                            setErrorDashboard(null);
-                            cargarDatos();
-                        }}
-                    >
-                        Reintentar
-                    </button>
-                </div>
-            )}
-=======
->>>>>>> e6ea361054ad13a9e53f3c907b851a82b43e76cd
 
             {errorDashboard && (
                 <div className="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
@@ -499,7 +479,7 @@ export function InfoDashboard() {
                     </div>
                     <div>
                         <h5 className="mb-0 fw-bold">
-                            Bienvenido, {perfil?.Nombre ?? user.username}{perfil?.Apellidos ? ` ${perfil.Apellidos}` : ''}
+                            Bienvenido, {perfil?.Nombre ? perfil.Nombre : user.username}{perfil?.Apellidos ? ` ${perfil.Apellidos}` : ''}
                         </h5>
                         <p className="mb-0 opacity-75 small">
                             {perfil?.email && (
@@ -560,35 +540,33 @@ export function InfoDashboard() {
                                 )}
                             </div>
                             {!fichajeActivo && (
-                                <div className="mb-2">
-                                    <label htmlFor="tipoFichaje" className="form-label small mb-1">Tipo de
-                                        registro</label>
+                                <div className="mb-3">
                                     <select
-                                        id="tipoFichaje"
                                         className="form-select form-select-sm"
                                         value={tipoSeleccionado}
                                         onChange={e => setTipoSeleccionado(e.target.value)}
-                                        disabled={enviandoFichaje}
                                     >
                                         <option value="Presencial">Presencial</option>
-                                        <option value="Teletrabajo">Teletrabajo</option>
+                                        <option value="Remoto">Remoto</option>
                                     </select>
                                 </div>
                             )}
                             {mensajeFichaje && (
-                                <div className={`alert alert-${mensajeFichaje.tipo} py-1 px-2 small mb-2`} role="alert">
+                                <div className={`alert alert-${mensajeFichaje.tipo} py-1 px-2 small mb-2`}>
                                     {mensajeFichaje.texto}
                                 </div>
                             )}
-                            <button
-                                className={`btn btn-sm w-100 btn-${fichajeActivo ? 'outline-danger' : 'outline-success'}`}
-                                onClick={() => handleFichaje(fichajeActivo ? 'salida' : 'entrada')}
-                                disabled={enviandoFichaje}
-                            >
-                                <i className={`bi bi-${fichajeActivo ? 'door-open' : 'door-closed-fill'} me-1`}
-                                   aria-hidden="true"></i>
-                                {enviandoFichaje ? 'Procesando...' : fichajeActivo ? 'Registrar salida' : 'Registrar entrada'}
-                            </button>
+                            <div className="d-grid">
+                                <button
+                                    className={`btn btn-sm btn-${fichajeActivo ? 'outline-danger' : 'outline-success'}`}
+                                    onClick={() => handleFichaje(fichajeActivo ? 'salida' : 'entrada')}
+                                    disabled={enviandoFichaje}
+                                >
+                                    <i className={`bi bi-${fichajeActivo ? 'door-open' : 'door-closed-fill'} me-1`}
+                                       aria-hidden="true"></i>
+                                    {enviandoFichaje ? 'Procesando...' : fichajeActivo ? 'Registrar salida' : 'Registrar entrada'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -782,8 +760,6 @@ export function InfoDashboard() {
                                     </h6>
                                     <BarraProgreso etiqueta="Abiertas" valor={incGlobalPendientes}
                                                    total={incGlobalTotal} color="danger"/>
-                                    <BarraProgreso etiqueta="En proceso" valor={incGlobalEnProceso}
-                                                   total={incGlobalTotal} color="warning"/>
                                     <BarraProgreso etiqueta="Resueltas" valor={incGlobalResueltas}
                                                    total={incGlobalTotal} color="success"/>
                                     <div
@@ -830,35 +806,12 @@ export function InfoDashboard() {
                                                    total={vacGlobalTotal} color="success"/>
                                     <BarraProgreso etiqueta="Rechazadas" valor={vacGlobalRechazadas}
                                                    total={vacGlobalTotal} color="danger"/>
-                                    <div
-                                        className="mt-3 pt-2 border-top d-flex justify-content-between text-muted small">
-                                        <span>Total solicitudes</span>
-                                        <span className="fw-semibold text-dark">{vacGlobalTotal}</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </>
             )}
-
-            {/* ── Barra inferior ── */}
-            <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
-                {ultimaActualizacion && (
-                    <small className="text-muted">
-                        Última actualización: {ultimaActualizacion.toLocaleTimeString('es-ES')}
-                    </small>
-                )}
-                <button
-                    className="btn btn-outline-primary btn-sm bi bi-arrow-clockwise"
-                    onClick={() => cargarDatos()}
-                    disabled={cargando}
-                    title="Recargar ahora"
-                >
-                    {' '}Actualizar
-                </button>
-            </div>
-
         </div>
     );
 }

@@ -20,15 +20,6 @@ async function actualizarIncidencia(req, res) {
         return res.status(400).send({ status: 400, message: 'El estado es obligatorio.' });
     }
 
-
-    const estadosValidos = ['Abierta', 'Cerrada'];
-    if (!estadosValidos.includes(estado)) {
-        return res.status(400).send({ status: 400, message: `Estado no valido. Valores permitidos: ${estadosValidos.join(', ')}` });
-    }
-
-
-    const estadoSolicitud = estado === 'Cerrada' ? 'Concedido' : 'En revisión';
-
     const config = {
         host:     process.env.DB_HOST,
         user:     process.env.DB_USER,

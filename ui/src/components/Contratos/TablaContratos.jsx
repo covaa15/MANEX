@@ -26,26 +26,10 @@ export function TablaContratos() {
     const [contratoEliminando, setContratoEliminando] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [errorCarga, setErrorCarga] = useState(null);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const [filtros, setFiltros] = useState({ salario: '', horas: '' });
-    const setFiltro = (campo, valor) => setFiltros(prev => ({ ...prev, [campo]: valor }));
-=======
-    const [filtros, setFiltros] = useState({salario: '', horas: ''});
-    const setFiltro = (campo, valor) => setFiltros(prev => ({...prev, [campo]: valor}));
->>>>>>> main
-
-    const {user, tengoPermiso} = useUsers();
-
-    useEffect(() => {
-        sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
-    }, [paginaActual]);
-=======
     const [filtros, setFiltros] = useState({salario: '', horas: ''});
     const setFiltro = (campo, valor) => setFiltros(prev => ({...prev, [campo]: valor}));
 
     const {user, tengoPermiso} = useUsers();
->>>>>>> e6ea361054ad13a9e53f3c907b851a82b43e76cd
 
     useEffect(() => {
         sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
@@ -94,7 +78,7 @@ export function TablaContratos() {
         cargarContratos();
     };
 
-    const contratosFiltrados = listaContratos.filter(c => (
+    const contratosFiltrados = listaContratos?.filter(c => (
         (!filtros.salario || String(c?.Salario_anual ?? '').includes(filtros.salario)) &&
         (!filtros.horas || String(c?.Horas_anuales ?? '').includes(filtros.horas))
     ));
@@ -152,36 +136,37 @@ export function TablaContratos() {
                             </tr>
                             </thead>
                             <tbody className="table-group-divider">
-                            {contratosFiltrados.length > 0 ? contratosFiltrados.map((contrato) => (
-                                <tr key={contrato?.ID} className="h-auto">
-                                    <th scope="row">{contrato?.ID}</th>
-                                    <td>{contrato?.Salario_anual?.toLocaleString('es-ES')} €</td>
-                                    <td>{contrato?.Horas_anuales} h</td>
-                                    <td className="h-auto w-auto p-1">
-                                        <button
-                                            className="btn btn-primary btn-sm"
-                                            title="Editar contrato"
-                                            aria-label="Editar contrato"
-                                            onClick={() => setContratoEditando(contrato)}
-                                            disabled={!tengoPermiso('/contratos', 'POST')}
-                                        ><i className="bi bi-pencil-fill" aria-hidden="true"/></button>
-                                        &nbsp;
-                                        <button
-                                            className="btn btn-danger btn-sm"
-                                            title="Eliminar contrato"
-                                            aria-label="Eliminar contrato"
-                                            onClick={() => setContratoEliminando(contrato)}
-                                            disabled={!tengoPermiso('/contratos', 'DELETE')}
-                                        ><i className="bi bi-trash-fill" aria-hidden="true"/></button>
-                                    </td>
-                                </tr>
-                            )) : (
-                                <tr>
-                                    <td colSpan={4} className="text-center text-muted py-4 small">
-                                        Sin resultados con los filtros aplicados.
-                                    </td>
-                                </tr>
-                            )}
+                            {contratosFiltrados.length > 0 ?
+                                contratosFiltrados.map((contrato) => (
+                                    <tr key={contrato?.ID} className="h-auto">
+                                        <th scope="row">{contrato?.ID}</th>
+                                        <td>{contrato?.Salario_anual?.toLocaleString('es-ES')} €</td>
+                                        <td>{contrato?.Horas_anuales} h</td>
+                                        <td className="h-auto w-auto p-1">
+                                            <button
+                                                className="btn btn-primary btn-sm"
+                                                title="Editar contrato"
+                                                aria-label="Editar contrato"
+                                                onClick={() => setContratoEditando(contrato)}
+                                                disabled={!tengoPermiso('/contratos', 'POST')}
+                                            ><i className="bi bi-pencil-fill" aria-hidden="true"/></button>
+                                            &nbsp;
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                title="Eliminar contrato"
+                                                aria-label="Eliminar contrato"
+                                                onClick={() => setContratoEliminando(contrato)}
+                                                disabled={!tengoPermiso('/contratos', 'DELETE')}
+                                            ><i className="bi bi-trash-fill" aria-hidden="true"/></button>
+                                        </td>
+                                    </tr>
+                                )) : (
+                                    <tr>
+                                        <td colSpan={4} className="text-center text-muted py-4 small">
+                                            Sin resultados con los filtros aplicados.
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>

@@ -75,31 +75,6 @@ export function TablaEmpleados() {
         setSearchParams({}, {replace: true});
     };
 
-    useEffect(() => {
-        sessionStorage.setItem('tabla_empleados_pagina', paginaActual);
-    }, [paginaActual]);
-
-    useEffect(() => {
-        const p = {};
-        if (dNombre) p.nombre = dNombre;
-        if (dApellidos) p.apellidos = dApellidos;
-        if (dEmail) p.email = dEmail;
-        if (dTelefono) p.telefono = dTelefono;
-        if (dDepartamento) p.departamento = dDepartamento;
-        if (dContrato) p.contrato = dContrato;
-        setSearchParams(p, { replace: true });
-    }, [dNombre, dApellidos, dEmail, dTelefono, dDepartamento, dContrato]);
-
-    useEffect(() => {
-        setPaginaActual(0);
-    }, [dNombre, dApellidos, dEmail, dTelefono, dDepartamento, dContrato]);
-
-     hayFiltros = !!(dNombre || dApellidos || dEmail || dTelefono || dDepartamento || dContrato);
-    limpiarFiltros = () => {
-        setFiltros({ nombre: '', apellidos: '', email: '', telefono: '', departamento: '', contrato: '' });
-        setSearchParams({}, { replace: true });
-    };
-
     const cargarEmpleados = () => {
         setCargando(true);
         setErrorCarga(null);
@@ -150,7 +125,6 @@ export function TablaEmpleados() {
         setEmpleadoEliminando(null);
         cargarEmpleados();
     };
-
 
     return (
         <>
@@ -270,22 +244,6 @@ export function TablaEmpleados() {
                                             onClick={() => setEmpleadoViendo(empleado)}
                                         >
                                             <i className="bi bi-eye-fill" aria-hidden="true"/>
-                                        </button>
-                                        <button
-                                            className="btn btn-info btn-sm"
-                                            title="Ver empleado"
-                                            aria-label="Ver empleado"
-                                            onClick={() => setEmpleadoViendo(empleado)}
-                                        >
-                                            <i className="bi bi-eye-fill" aria-hidden="true" />
-                                        </button>
-                                        <button
-                                            className="btn btn-info btn-sm"
-                                            title="Ver empleado"
-                                            aria-label="Ver empleado"
-                                            onClick={() => setEmpleadoViendo(empleado)}
-                                        >
-                                            <i className="bi bi-eye-fill" aria-hidden="true" />
                                         </button>
                                         &nbsp;
                                         <button
