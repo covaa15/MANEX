@@ -26,14 +26,10 @@ export function TablaContratos() {
     const [contratoEliminando, setContratoEliminando] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [errorCarga, setErrorCarga] = useState(null);
-
-    const {user, tengoPermiso} = useUsers();
-
-    useEffect(() => {
-        sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
-    }, [paginaActual]);
     const [filtros, setFiltros] = useState({salario: '', horas: ''});
     const setFiltro = (campo, valor) => setFiltros(prev => ({...prev, [campo]: valor}));
+
+    const {user, tengoPermiso} = useUsers();
 
     useEffect(() => {
         sessionStorage.setItem('tabla_contratos_pagina', paginaActual);
