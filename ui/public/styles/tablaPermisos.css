@@ -35,6 +35,20 @@
     cursor: pointer;
 }
 
+.empleados-container {
+    overflow-y: scroll !important;
+    height: fit-content !important;
+    min-height: fit-content !important;
+    max-height: fit-content;
+}
+.empleados-container .d-flex.flex-column.gap-2.w-100.p-4.justify-content-center {
+    height: fit-content !important;
+    overflow-y: visible;
+}
+.contenedor-tabla {
+    height: fit-content;
+    overflow: scroll !important;
+}
 .acciones-tabla .btn:hover:not(:disabled) {
     transform: scale(1.12);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);

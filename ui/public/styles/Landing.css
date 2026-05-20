@@ -8,12 +8,8 @@ body.landing-active {
 }
 
 .landing-page {
-    min-height: 100vh;
+    height: 100%;
     font-family: inherit;
-    /* override any global background watermark */
-    background: #fff;
-    position: relative;
-    isolation: isolate;
 }
 
 .landing-page::before {
@@ -75,7 +71,7 @@ body.landing-active {
     justify-content: center;
     gap: 4rem;
     padding: 7rem 3rem 4rem;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .landing-hero-content {

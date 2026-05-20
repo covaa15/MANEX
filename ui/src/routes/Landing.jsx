@@ -94,7 +94,7 @@ export const Landing = () => {
     };
 
     return (
-        <div className="landing-page">
+        <div className="landing-page overflow-scroll">
 
             {/* ── Navbar ── */}
             <nav className="landing-nav">

@@ -83,18 +83,26 @@ form div {
 
 .main-nav .nav-link {
     min-height: 40px;
+    height: fit-content;
+    width: 100%;
+    overflow-wrap: anywhere;
+    overflow: hidden;
 }
 
 .main-nav .nav-link .bi,
 .main-nav .dropdown-toggle .bi {
-    width: 16px;
+    width: 10%;
+}
+.nav-item {
+    width: 100%;
 }
 
 .main-nav-avatar {
-    width: 32px;
+    width: 80%;
     height: 32px;
     background-color: #495057;
     font-size: .875rem;
+    text-wrap: wrap;
 }
 
 .dashboard-main {
@@ -156,7 +164,6 @@ form div {
     width: min(100%, 520px);
     border-radius: .75rem;
 }
-
 .error-icon {
     width: 72px;
     height: 72px;
@@ -164,7 +171,11 @@ form div {
     color: #dc3545;
     font-size: 2rem;
 }
-
+.empleados-container {
+    min-height: 95dvh !important;
+    height: fit-content !important;
+    overflow-y: scroll !important;
+}
 .mobile-menu-header {
     display: none;
 }
@@ -176,21 +187,18 @@ form div {
 .app-content {
     width: 85dvw;
     flex-grow: 1;
-    height: 100dvh;
+    height: 100dvh !important;
+    min-height: 95dvh !important;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: scroll;
 }
 .app-shell {
     overflow: hidden;
     height: 100dvh;
 }
 
-.dashboard-main {
-    flex: 1;
-}
 
 #desplegableUsuario {
     transition: all 0.3s ease;
@@ -205,6 +213,7 @@ form div {
 #desplegableUsuario {
     border-radius: 18px;
 }
+
 
 @media (max-width: 1000px) {
 
@@ -224,7 +233,6 @@ form div {
     .main-nav.menu-open .menu-toggle-btn i {
         transform: rotate(180deg);
     }
-
     .main-nav {
         width: 100dvw;
         height: 10dvh;
@@ -303,7 +311,8 @@ form div {
         height: 100dvh !important;
     }
     .app-content {
-        height: 100dvh !important;
+        height: 90dvh !important;
+        max-height: 90vh !important;
         width: 100dvw !important;
         flex-direction: column;
         justify-content: unset !important;
@@ -320,9 +329,6 @@ form div {
     #desplegableUsuario .btn {
         font-size: 0.9rem;
         padding: 0.25rem 0 !important;
-    }
-    .dashboard {
-        height: 90dvh !important;
     }
     .main-nav-avatar {
         width: 28px;

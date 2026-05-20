@@ -191,7 +191,7 @@ export function TablaIncidencias({tipoIncidencia, idEmpleado}) {
             )}
 
             {listaIncidencias.length > 0 || hayFiltros ? (
-                <div className="m-3 d-flex flex-column contenedor-tabla">
+                <div className="m-3 d-flex flex-column contenedor-tablas overflow-scroll">
                     <div className={"table-responsive"}>
                         <table className="table table-striped overflow-x-auto align-middle">
                             <thead>

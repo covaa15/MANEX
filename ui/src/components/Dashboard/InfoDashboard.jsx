@@ -97,12 +97,12 @@ function TablaResumen({filas, columnas, vacia}) {
         <div className="table-responsive">
             <table className="table table-sm table-striped mb-0">
                 <thead>
-                <tr>{columnas.map(c => <th key={c.key} scope="col" className={c.className}>{c.label}</th>)}</tr>
+                <tr>{columnas.map(c => <th tabIndex={"0"} key={c.key} className={c.className}>{c.label}</th>)}</tr>
                 </thead>
                 <tbody className="table-group-divider">
                 {filas.map((fila, i) => (
                     <tr key={fila.id ?? fila.ID ?? i}>
-                        {columnas.map(c => <td key={c.key} className={c.className}>{c.render(fila)}</td>)}
+                        {columnas.map(c => <td tabIndex={"0"} className={c.className}>{c.render(fila)}</td>)}
                     </tr>
                 ))}
                 </tbody>
