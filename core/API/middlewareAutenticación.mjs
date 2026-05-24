@@ -97,7 +97,7 @@ export async function getNivelAcceso(token, pool = mysql.createPool({
 })) {
     try {
         const [rows] = await pool.query(
-            'SELECT e.ID_DEPARTAMENTO, a.USERNAME FROM auth_token a JOIN EMPLEADO e ON a.USERNAME = e.USERNAME WHERE a.token = ? AND a.EXPIRES_AT > NOW();',
+            'SELECT e.ID_DEPARTAMENTO, a.USERNAME FROM auth_token a JOIN empleado e ON a.USERNAME = e.USERNAME WHERE a.token = ? AND a.EXPIRES_AT > NOW();',
             [token]
         );
         if (rows.length > 0) {
