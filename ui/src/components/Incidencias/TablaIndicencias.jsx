@@ -263,22 +263,12 @@ export function TablaIncidencias({tipoIncidencia, idEmpleado}) {
                                                 className="btn btn-primary btn-sm"
                                                 title="Editar incidencia"
                                                 aria-label="Editar incidencia"
-                                                disabled={!tengoPermiso('/incidencias', 'POST')}
+                                                disabled={!tengoPermiso('/incidencias', 'POST') || estado == 'Cerrada'}
                                                 onClick={() => {
                                                     setIncidenciaSeleccionada(incidencia);
                                                     setMostrarFormulario(true);
                                                 }}
-                                            ><i className="bi bi-pencil-fill" aria-hidden="true"/></button>&nbsp;
-                                            <button
-                                                className="btn btn-danger btn-sm"
-                                                title="Eliminar incidencia"
-                                                aria-label="Eliminar incidencia"
-                                                disabled={!tengoPermiso('/incidencias', 'DELETE')}
-                                                onClick={() => {
-                                                    setIncidenciaAEliminar(incidencia);
-                                                    setEliminando(true);
-                                                }}
-                                            ><i className="bi bi-trash-fill" aria-hidden="true"/></button>
+                                            ><i className="bi bi-pencil-fill" aria-hidden="true"/></button>
                                         </td>
                                     </tr>
                                 );
