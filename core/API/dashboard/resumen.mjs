@@ -46,7 +46,7 @@ async function fetchGlobalStats() {
         [[{ proximas }]],
     ] = await Promise.all([
         pool.query(`SELECT COUNT(*) AS empleados FROM empleado WHERE esVisible = 1`),
-        pool.query(`SELECT COUNT(*) AS fichajes FROM fichajes`),
+        pool.query(`SELECT COUNT(*) AS fichajes FROM fichajes WHERE FECHA_ENTRADA < NOW() AND FECHA_SALIDA IS NULL;`),
         pool.query(`SELECT COUNT(*) AS departamentos FROM departamento`),
         pool.query(`SELECT COUNT(*) AS contratos FROM contrato`),
         pool.query(`SELECT estado, COUNT(*) AS total FROM incidencia GROUP BY estado`),
